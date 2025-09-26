@@ -576,25 +576,24 @@ Another year older, but still young enough to rage at FIFA referees, defend Man 
                 }
             };
 
-            // Handle video placeholder click - Mobile-friendly approach
-            videoPlaceholder.addEventListener('click', function() {
-                // For mobile, we need to handle this differently
-                if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-                    // Mobile device - use a more direct approach
-                    youtubeVideo.src = "https://www.youtube.com/embed/UNZqm3dxd2w?autoplay=1&mute=0";
-                } else {
-                    // Desktop - standard approach
-                    youtubeVideo.src += "&autoplay=1";
-                }
-                
-                // Hide the placeholder with a slight delay to ensure YouTube loads
+           // Spotify controls
+            const spotifyPlaceholder = document.getElementById('spotifyPlaceholder');
+            const spotifyEmbed = document.getElementById('spotifyEmbed');
+
+            spotifyEmbed.style.display = "none"; // hide until clicked
+
+            spotifyPlaceholder.addEventListener('click', function() {
+                spotifyEmbed.src += "&autoplay=1"; // force autoplay
+                spotifyEmbed.style.display = "block";
+                spotifyPlaceholder.style.opacity = '0';
                 setTimeout(function() {
-                    videoPlaceholder.style.opacity = '0';
-                    setTimeout(function() {
-                        videoPlaceholder.style.display = 'none';
-                    }, 500);
-                }, 300);
+                    spotifyPlaceholder.style.display = 'none';
+                }, 500);
             });
+
+            // ... rest of your JS unchanged ...
+        });
+                
 
             // Handle age submission
             submitBtn.addEventListener('click', function() {
@@ -699,3 +698,4 @@ Another year older, but still young enough to rage at FIFA referees, defend Man 
     </script>
 </body>
 </html>
+
