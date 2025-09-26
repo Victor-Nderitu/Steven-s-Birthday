@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday Steven!</title>
     <style>
+        :root{ 
+            --bg1: #071029; /* deep navy */
+            --bg2: #0f2540; /* darker bluish */
+            --accent: #7bdff6; /* electric cyan (ManCity-ish) */
+            --gold: #ffd166; /* warm accent */
+            --muted: #9fb3c8;
+            --glass: rgba(255,255,255,0.04);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -14,7 +22,7 @@
         }
 
         body {
-            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            background: linear-gradient(135deg, var(--bg1), var(--bg2), #1a2a6c);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
             min-height: 100vh;
@@ -37,11 +45,12 @@
         .container {
             max-width: 900px;
             padding: 30px;
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: var(--glass);
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(10px);
             transition: all 0.5s ease;
+            border: 1px solid rgba(123, 223, 246, 0.2);
         }
 
         .age-input-screen {
@@ -65,12 +74,13 @@
             font-size: 3rem;
             margin-bottom: 20px;
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            color: var(--accent);
         }
 
         .birthday-title {
             font-size: 4rem;
             margin-bottom: 30px;
-            background: linear-gradient(45deg, #ff8a00, #e52e71, #00b4db);
+            background: linear-gradient(45deg, var(--gold), var(--accent), #e52e71);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -80,8 +90,8 @@
         }
 
         @keyframes titleGlow {
-            from { text-shadow: 0 0 10px rgba(255, 138, 0, 0.7); }
-            to { text-shadow: 0 0 20px rgba(229, 46, 113, 0.9), 0 0 30px rgba(0, 180, 219, 0.7); }
+            from { text-shadow: 0 0 10px var(--gold); }
+            to { text-shadow: 0 0 20px var(--accent), 0 0 30px rgba(229, 46, 113, 0.7); }
         }
 
         .title-animation {
@@ -133,7 +143,7 @@
             font-size: 1.2rem;
             border: none;
             border-radius: 50px;
-            background: linear-gradient(45deg, #00b4db, #0083b0);
+            background: linear-gradient(45deg, var(--accent), #0083b0);
             color: white;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -148,9 +158,10 @@
         .content-section {
             margin: 20px 0;
             padding: 20px;
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--glass);
             border-radius: 10px;
             animation: fadeIn 1s ease;
+            border: 1px solid rgba(123, 223, 246, 0.1);
         }
 
         @keyframes fadeIn {
@@ -167,16 +178,18 @@
         }
 
         .interest-card {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.1);
             padding: 15px;
             border-radius: 10px;
             width: 150px;
             transition: all 0.3s ease;
+            border: 1px solid rgba(123, 223, 246, 0.2);
         }
 
         .interest-card:hover {
             transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 5px 15px rgba(123, 223, 246, 0.3);
         }
 
         .interest-icon {
@@ -201,12 +214,12 @@
         }
 
         .law-text {
-            color: #ff8a00;
+            color: var(--gold);
             animation: lawAnimation 6s infinite;
         }
 
         .it-text {
-            color: #00b4db;
+            color: var(--accent);
             animation: itAnimation 6s infinite;
         }
 
@@ -226,7 +239,7 @@
             padding: 15px;
             background: rgba(255, 215, 0, 0.2);
             border-radius: 10px;
-            border-left: 5px solid gold;
+            border-left: 5px solid var(--gold);
         }
 
         .rugby-jokes {
@@ -273,12 +286,12 @@
 
         .song-title {
             font-weight: bold;
-            color: #d8bfd8;
+            color: var(--muted);
             font-size: 1.5rem;
             margin-bottom: 15px;
         }
 
-        .video-container {
+        .spotify-container {
             position: relative;
             width: 100%;
             max-width: 645px;
@@ -287,36 +300,36 @@
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
             transition: transform 0.3s ease;
+            border: 3px solid transparent;
+            animation: pulseGlow 3s infinite;
         }
 
-        .video-container:hover {
-            transform: scale(1.02);
+        .spotify-container:hover {
+            transform: scale(1.05);
         }
 
-        .video-wrapper {
-            position: relative;
-            width: 100%;
-            height: 0;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        @keyframes pulseGlow {
+            0% {
+                box-shadow: 0 0 10px var(--accent), 0 0 20px var(--gold);
+                border-color: var(--accent);
+            }
+            50% {
+                box-shadow: 0 0 25px var(--gold), 0 0 45px var(--accent);
+                border-color: var(--gold);
+            }
+            100% {
+                box-shadow: 0 0 10px var(--accent), 0 0 20px var(--gold);
+                border-color: var(--accent);
+            }
         }
 
-        .video-wrapper iframe {
+        .spotify-placeholder {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            border: none;
-            border-radius: 12px;
-        }
-
-        .video-placeholder {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, #333, #555);
+            background: linear-gradient(45deg, #333, #1DB954);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -334,7 +347,7 @@
             transition: transform 0.3s ease;
         }
 
-        .video-placeholder:hover .play-button {
+        .spotify-placeholder:hover .play-button {
             transform: scale(1.2);
         }
 
@@ -362,7 +375,7 @@
             opacity: 0.8;
         }
 
-        /* Mobile-specific styles */
+        /* Responsive adjustments */
         @media (max-width: 768px) {
             .container {
                 margin: 10px;
@@ -382,7 +395,7 @@
                 align-items: center;
             }
             
-            .video-container {
+            .spotify-container {
                 max-width: 100%;
             }
             
@@ -414,6 +427,10 @@
                 width: 90%;
                 max-width: 250px;
             }
+            
+            .spotify-container {
+                height: 352px;
+            }
         }
     </style>
 </head>
@@ -423,8 +440,7 @@
         <div class="age-input-screen" id="ageScreen">
             <h1>Hey Steven!</h1>
             <p>Before we celebrate, tell us how young you're turning today:</p>
-            <p>Na make sure huko 65 doing you masters 😂😂😂</p>
-            <input type="number" class="age-input" id="ageInput" placeholder="Enter your age" min="19" max="30">
+            <input type="number" class="age-input" id="ageInput" placeholder="Enter your age" min="20" max="30">
             <button class="submit-btn" id="submitAge">Let's Celebrate!</button>
         </div>
 
@@ -436,8 +452,6 @@
             <div class="content-section">
                 <p>Welcome to your <span id="ageDisplay"></span> trip around the sun! 🎉</p>
                 <p>Another year wiser, another year closer to that dream car (or at least a better FIFA team)!</p>
-                <p>Happy Birthday Steven! 🎉
-Another year older, but still young enough to rage at FIFA referees, defend Man City’s honor, win rugby games and dream about cars you’ll “definitely” own someday. May this year bring you fewer KFC losses, more courtroom wins (when you’re not coding), and plenty of moments that prove the best part of your 20s is just getting started. Keep shining, brother—today’s all about you.</p>
             </div>
 
             <!-- Law and IT Animation -->
@@ -462,11 +476,6 @@ Another year older, but still young enough to rage at FIFA referees, defend Man 
                     <div class="interest-icon">🎮</div>
                     <h3>FIFA</h3>
                     <p>May your skills be as sharp as your legal arguments!</p>
-                </div>
-                <div class="interest-card">
-                    <div class="interest-icon">🏉</div>
-                    <h3>Rugby</h3>
-                    <p>May your win be as many as your year and the years to come</p>
                 </div>
                 <div class="interest-card">
                     <div class="interest-icon">🚗</div>
@@ -506,31 +515,41 @@ Another year older, but still young enough to rage at FIFA referees, defend Man 
                     <div class="joke-question">What's a rugby player's favorite type of music?</div>
                     <div class="joke-answer">Soul music - because of all the sole-searching tackles!</div>
                 </div>
+                
+                <div class="joke-container" onclick="toggleJoke(this)">
+                    <div class="joke-question">Why don't rugby players play hide and seek?</div>
+                    <div class="joke-answer">Because good luck hiding when you're built like a fridge!</div>
+                </div>
             </div>
 
-            <!-- Favorite Song with YouTube Video -->
+            <!-- Favorite Song with Spotify Embed -->
             <div class="song-section">
                 <p>And of course, we can't forget your favorite tune:</p>
                 <p class="song-title">"The Box" by Roddy Ricch</p>
                 <p>Hope your birthday is as lit as this track! 🎵</p>
                 
                 <div class="mobile-audio-notice">
-                    <p>📱 <strong>Mobile Tip:</strong> If audio doesn't play, try turning up your volume or unlocking silent mode</p>
+                    <p>📱 <strong>Mobile Tip:</strong> Tap the Spotify player below to listen to "The Box"</p>
                 </div>
                 
-               <div class="spotify-container">
+                <div class="spotify-container">
                     <div class="spotify-placeholder" id="spotifyPlaceholder">
                         <div class="play-button">▶️</div>
-                        <p>Click to play "The Box" on Spotify</p>
+                        <p>Click to listen to "The Box" on Spotify</p>
+                        <p>Works on all devices!</p>
                     </div>
-                    <iframe id="spotifyEmbed" style="border-radius:12px" 
-                        src="https://open.spotify.com/embed/track/0nbXyq5TXYPCO7pr3N8S4I?utm_source=generator" 
-                        width="100%" height="352" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-                        loading="lazy"></iframe>
+                    <iframe data-testid="embed-iframe" style="border-radius:12px; display: none;" 
+                            src="https://open.spotify.com/embed/track/0nbXyq5TXYPCO7pr3N8S4I?utm_source=generator" 
+                            width="100%" height="352" frameBorder="0" 
+                            allowfullscreen="" 
+                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                            loading="lazy" id="spotifyEmbed">
+                    </iframe>
+                </div>
             </div>
 
             <div class="footer">
-                <p>Happy birthday Steven | September 27th</p>
+                <p>Made with ❤️ for Steven's Birthday | September 27th</p>
             </div>
         </div>
     </div>
@@ -543,8 +562,8 @@ Another year older, but still young enough to rage at FIFA referees, defend Man 
             const submitBtn = document.getElementById('submitAge');
             const ageDisplay = document.getElementById('ageDisplay');
             const titleAnimation = document.getElementById('titleAnimation');
-            const videoPlaceholder = document.getElementById('videoPlaceholder');
-            const youtubeVideo = document.getElementById('youtubeVideo');
+            const spotifyPlaceholder = document.getElementById('spotifyPlaceholder');
+            const spotifyEmbed = document.getElementById('spotifyEmbed');
 
             // Focus on age input when page loads
             ageInput.focus();
@@ -576,24 +595,21 @@ Another year older, but still young enough to rage at FIFA referees, defend Man 
                 }
             };
 
-           // Spotify controls
-            const spotifyPlaceholder = document.getElementById('spotifyPlaceholder');
-            const spotifyEmbed = document.getElementById('spotifyEmbed');
-
-            spotifyEmbed.style.display = "none"; // hide until clicked
-
+            // Handle Spotify placeholder click
             spotifyPlaceholder.addEventListener('click', function() {
-                spotifyEmbed.src += "&autoplay=1"; // force autoplay
-                spotifyEmbed.style.display = "block";
+                // Show the Spotify embed
+                spotifyEmbed.style.display = 'block';
+                
+                // Hide the placeholder with animation
                 spotifyPlaceholder.style.opacity = '0';
                 setTimeout(function() {
                     spotifyPlaceholder.style.display = 'none';
+                    
+                    // Try to trigger play on the Spotify embed
+                    // Note: Spotify controls its own playback, so we can't force autoplay
+                    // But the user can simply click play in the Spotify player
                 }, 500);
             });
-
-            // ... rest of your JS unchanged ...
-        });
-                
 
             // Handle age submission
             submitBtn.addEventListener('click', function() {
@@ -665,34 +681,6 @@ Another year older, but still young enough to rage at FIFA referees, defend Man 
                         confetti.remove();
                     }, 5000);
                 }
-            }
-
-            // Mobile-specific audio helper
-            function enableAudioOnMobile() {
-                // Create and play a silent audio buffer to unlock audio on iOS
-                const unlockAudio = () => {
-                    const context = new (window.AudioContext || window.webkitAudioContext)();
-                    const buffer = context.createBuffer(1, 1, 22050);
-                    const source = context.createBufferSource();
-                    source.buffer = buffer;
-                    source.connect(context.destination);
-                    source.start(0);
-                    
-                    // Resume the audio context if it was suspended
-                    if (context.state === 'suspended') {
-                        context.resume();
-                    }
-                };
-                
-                // Try to unlock audio on user interaction
-                document.addEventListener('touchstart', unlockAudio, { once: true });
-                document.addEventListener('touchend', unlockAudio, { once: true });
-                document.addEventListener('click', unlockAudio, { once: true });
-            }
-
-            // Initialize mobile audio helper
-            if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-                enableAudioOnMobile();
             }
         });
     </script>
